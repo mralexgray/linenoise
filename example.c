@@ -35,17 +35,16 @@ int main(int argc, char **argv) {
      * user uses the <tab> key. */
     linenoiseSetCompletionCallback(completion);
 
-    /* Load history from file. The history file is just a plain text file
-     * where entries are separated by newlines. */
+/* Load history from file. The history file is just a plain text file where entries are separated by newlines. */
     linenoiseHistoryLoad("history.txt"); /* Load the history at startup */
 
-    /* Now this is the main loop of the typical linenoise-based application.
-     * The call to linenoise() will block as long as the user types something
-     * and presses enter.
-     *
-     * The typed string is returned as a malloc() allocated string by
-     * linenoise, so the user needs to free() it. */
-    while((line = linenoise("hello> ")) != NULL) {
+/*! 
+  Now this is the main loop of the typical linenoise-based application.
+  The call to linenoise() will block as long as the user types something and presses enter.
+  The typed string is returned as a malloc() allocated string by linenoise, so the user needs to free() it. 
+ */
+    while ((line = linenoise("hello> "))) {
+    
         /* Do something with the string. */
         if (line[0] != '\0' && line[0] != '/') {
             printf("echo: '%s'\n", line);
